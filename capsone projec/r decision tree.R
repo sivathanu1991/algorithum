@@ -1,0 +1,15 @@
+getwd()
+setwd('C:/Users/Windows 10/Desktop/capsone projec')
+age <- c(12,15,16,18,25)
+age
+library(rpart)
+library(rpart.plot)
+data <- read.csv('C:/Users/Windows 10/Desktop/capsone projec/HR_Employee_Attrition_Data.csv')
+View(data)
+data1 = data[c('Department','EducationField','JobRole','MonthlyIncome')]
+View(data1)
+tree <- rpart(MonthlyIncome ~ Department+EducationField+JobRole,data1)
+a <- data.frame(Department=c('Sales'),EducationField=c("Medical"),JobRole=c('Sales Executive'))
+resslt<- predict(tree,a)
+rpart.plot(tree)
+print(resslt)
